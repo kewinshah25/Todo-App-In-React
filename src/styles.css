@@ -1,8 +1,9 @@
 .card-container {
+    font-size: 2rem;
     width: 500px;
     max-height: 500px;
     border: 2px solid #000;
-	border-radius: 2px;
+	border-radius: 4px;
     margin: 10px auto;
     padding: 10px;
     overflow-y: auto;
@@ -23,15 +24,25 @@
 }
 
 .list-container {
-    margin: 10px;
     padding: 2px;
     border: 1px solid rgb(207, 162, 162);
     border-radius: 2px;
     cursor: pointer;
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .list-container:hover {
     border: 1px solid rgb(54, 31, 31)
+}
+
+.list-item {
+    margin: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px
 }
 
 .header {
@@ -45,5 +56,5 @@ input {
 	background: #fff;
 	border: 2px solid #596dae;
 	border-radius: 2px;
-	margin-bottom: 10px;
+    font-size: 2rem;
 }

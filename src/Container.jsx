@@ -5,7 +5,7 @@ import "./styles.css";
 export default function Container() {
     const [todoItems, setTodoItems] = useState( localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : []);
     const [input, setInput] = useState("");
-    console.log(todoItems);
+    console.log('Noob Girya!');
     
 
     function addItemToList(e) {
@@ -31,15 +31,28 @@ export default function Container() {
         localStorage.setItem("todo", JSON.stringify(todos))
     }
 
+    function deleteItem(item) {
+        let todos = [...todoItems].filter(t => t.id !== item.id);
+        setTodoItems(() => todos);
+        localStorage.setItem("todo", JSON.stringify(todos))
+    }
+
     return (
         // Container for 1 card
         <div className="card-container">
             <div className="center">
-                <input value={input} type="text" placeholder="+" onKeyDown={addItemToList} onChange={handleChange}></input>
+                <input className="input-container" value={input} 
+                    type="text" placeholder="+" onKeyDown={addItemToList} onChange={handleChange}>
+                </input>
             </div>
             <ul className="todo-list">
                 {todoItems.map(todoItem =>
-                    <li onClick={() => toggleDone(todoItem)} key={todoItem.id} className="list-container"> <span className={`list ${todoItem.done ? "strike" : ""}`}>{todoItem.value}</span> </li>
+                    <li key={todoItem.id} className="list-container"> 
+                        <div className={`list-item ${todoItem.done ? "strike" : ""}`} onClick={() => toggleDone(todoItem)} >
+                            {todoItem.value}
+                        </div>  
+                        <div className="list-item" onClick={() => deleteItem(todoItem)}>x</div>
+                    </li>
                 )}
             </ul>
         </div>
